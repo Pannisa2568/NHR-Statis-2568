@@ -1,154 +1,182 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>แบบบันทึกสถิตินักเรียน NHR School 2568</title>
   <style>
     body {
       font-family: sans-serif;
-      background-color: white;
-      color: black;
+      background-color: #fff;
+      color: #000;
       margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
       padding: 20px;
+    }
+
+    h1 {
+      color: black;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
       border: 2px solid orange;
+      padding: 20px;
       border-radius: 10px;
     }
-    h1 {
-      text-align: center;
-      color: orange;
-      margin-bottom: 30px;
-    }
+
     label {
       display: block;
-      margin: 15px 0 5px;
+      margin-top: 15px;
+      font-weight: bold;
     }
+
     select, input[type="number"] {
       width: 100%;
       padding: 10px;
+      margin-top: 5px;
       border: 1px solid orange;
       border-radius: 5px;
-      font-size: 16px;
     }
-    button {
+
+    #submitBtn {
+      margin-top: 20px;
       width: 100%;
       padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
       background-color: green;
       color: white;
       border: none;
       border-radius: 5px;
-      font-size: 18px;
-      margin-top: 20px;
       cursor: pointer;
     }
-    .success-message {
-      margin-top: 20px;
-      background-color: #d4edda;
-      color: #155724;
-      padding: 15px;
-      border-radius: 5px;
-      text-align: center;
+
+    #submitBtn.sent {
+      background-color: red;
+    }
+
+    #responseMsg {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: orange;
+      color: black;
+      padding: 30px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
       display: none;
+      text-align: center;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
-    <form id="studentForm">
-      <label for="class">ชั้น/ห้อง</label>
-      <select name="entry.522842455" id="class" required>
-        <option value="">-- กรุณาเลือก --</option>
-        <option>อนุบาล 2/1</option>
-        <option>อนุบาล 2/2</option>
-        <option>อนุบาล 2/3</option>
-        <option>อนุบาล 3/1</option>
-        <option>อนุบาล 3/2</option>
-        <option>อนุบาล 3/3</option>
-        <option>อนุบาล 3/4</option>
-        <option>ป.1/1</option>
-        <option>ป.1/2</option>
-        <option>ป.1/3</option>
-        <option>ป.1/4</option>
-        <option>ป.2/1</option>
-        <option>ป.2/2</option>
-        <option>ป.2/3</option>
-        <option>ป.2/4</option>
-        <option>ป.3/1</option>
-        <option>ป.3/2</option>
-        <option>ป.3/3</option>
-        <option>ป.3/4</option>
-        <option>ป.4/1</option>
-        <option>ป.4/2</option>
-        <option>ป.4/3</option>
-        <option>ป.4/4</option>
-        <option>ป.5/1</option>
-        <option>ป.5/2</option>
-        <option>ป.5/3</option>
-        <option>ป.5/4</option>
-        <option>ป.5/5</option>
-        <option>ป.6/1</option>
-        <option>ป.6/2</option>
-        <option>ป.6/3</option>
-        <option>ป.6/4</option>
-      </select>
 
-      <label>จำนวนนักเรียนชาย 👦🏻 ที่มาเรียน</label>
-      <input type="number" name="entry.446341418" min="0" required>
+<h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
 
-      <label>จำนวนนักเรียนหญิง 👧 ที่มาเรียน</label>
-      <input type="number" name="entry.1572431820" min="0" required>
+<form id="studentForm" action="https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse" method="POST" target="hidden_iframe" onsubmit="window.submitted=true;">
+  <label for="class">ชั้น/ห้อง</label>
+  <select name="entry.522842455" id="class" required>
+    <option value="">เลือกชั้น/ห้อง</option>
+    <option>อนุบาล 2/1</option>
+    <option>อนุบาล 2/2</option>
+    <option>อนุบาล 2/3</option>
+    <option>อนุบาล 3/1</option>
+    <option>อนุบาล 3/2</option>
+    <option>อนุบาล 3/3</option>
+    <option>อนุบาล 3/4</option>
+    <option>ป.1/1</option>
+    <option>ป.1/2</option>
+    <option>ป.1/3</option>
+    <option>ป.1/4</option>
+    <option>ป.2/1</option>
+    <option>ป.2/2</option>
+    <option>ป.2/3</option>
+    <option>ป.2/4</option>
+    <option>ป.3/1</option>
+    <option>ป.3/2</option>
+    <option>ป.3/3</option>
+    <option>ป.3/4</option>
+    <option>ป.4/1</option>
+    <option>ป.4/2</option>
+    <option>ป.4/3</option>
+    <option>ป.4/4</option>
+    <option>ป.5/1</option>
+    <option>ป.5/2</option>
+    <option>ป.5/3</option>
+    <option>ป.5/4</option>
+    <option>ป.5/5</option>
+    <option>ป.6/1</option>
+    <option>ป.6/2</option>
+    <option>ป.6/3</option>
+    <option>ป.6/4</option>
+  </select>
 
-      <label>จำนวนนักเรียนชาย 👦🏻 ที่ป่วย</label>
-      <input type="number" name="entry.932967472" min="0" required>
+  <label>จำนวนนักเรียนชาย 👦🏻 ที่มาเรียน</label>
+  <input type="number" name="entry.446341418" min="0" required />
 
-      <label>จำนวนนักเรียนชาย 👦🏻 ที่ลา</label>
-      <input type="number" name="entry.1558724961" min="0" required>
+  <label>จำนวนนักเรียนหญิง 👧 ที่มาเรียน</label>
+  <input type="number" name="entry.1572431820" min="0" required />
 
-      <label>จำนวนนักเรียนชาย 👦🏻 ที่ขาด</label>
-      <input type="number" name="entry.1652164491" min="0" required>
+  <label>จำนวนนักเรียนชาย 👦🏻 ที่ป่วย</label>
+  <input type="number" name="entry.932967472" min="0" required />
 
-      <label>จำนวนนักเรียนหญิง 👧 ที่ป่วย</label>
-      <input type="number" name="entry.878207052" min="0" required>
+  <label>จำนวนนักเรียนชาย 👦🏻 ที่ลา</label>
+  <input type="number" name="entry.1558724961" min="0" required />
 
-      <label>จำนวนนักเรียนหญิง 👧 ที่ลา</label>
-      <input type="number" name="entry.1277963062" min="0" required>
+  <label>จำนวนนักเรียนชาย 👦🏻 ที่ขาด</label>
+  <input type="number" name="entry.1652164491" min="0" required />
 
-      <label>จำนวนนักเรียนหญิง 👧 ที่ขาด</label>
-      <input type="number" name="entry.2011543549" min="0" required>
+  <label>จำนวนนักเรียนหญิง 👧 ที่ป่วย</label>
+  <input type="number" name="entry.878207052" min="0" required />
 
-      <button id="submitBtn" type="submit">ส่งข้อมูล</button>
-    </form>
-    <div class="success-message" id="successMessage">เจ้าหน้าที่ธุรการได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว ขอบคุณค่ะ</div>
-  </div>
+  <label>จำนวนนักเรียนหญิง 👧 ที่ลา</label>
+  <input type="number" name="entry.1277963062" min="0" required />
 
-  <script>
+  <label>จำนวนนักเรียนหญิง 👧 ที่ขาด</label>
+  <input type="number" name="entry.2011543549" min="0" required />
+
+  <button type="submit" id="submitBtn">ส่งข้อมูล</button>
+</form>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) afterSubmit()"></iframe>
+
+<div id="responseMsg">เจ้าหน้าที่ธุรการได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว ขอบคุณค่ะ</div>
+
+<audio id="bellSound" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg" preload="auto"></audio>
+
+<script>
+  window.submitted = false;
+
+  function afterSubmit() {
+    const btn = document.getElementById('submitBtn');
     const form = document.getElementById('studentForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMessage = document.getElementById('successMessage');
+    const msg = document.getElementById('responseMsg');
+    const bell = document.getElementById('bellSound');
 
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
+    // Change button color
+    btn.classList.add('sent');
 
-      const formData = new FormData(form);
-      const url = 'https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse';
+    // Show message
+    msg.style.display = 'block';
 
-      await fetch(url, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      });
+    // Play sound
+    bell.play();
 
-      submitBtn.style.backgroundColor = 'red';
-      successMessage.style.display = 'block';
+    // Reset after 5 seconds
+    setTimeout(() => {
+      msg.style.display = 'none';
+      btn.classList.remove('sent');
       form.reset();
-    });
-  </script>
+      window.submitted = false;
+    }, 5000);
+  }
+</script>
+
 </body>
 </html>
