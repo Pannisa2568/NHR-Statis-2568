@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>แบบบันทึกสถิตินักเรียน NHR School 2568</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: white;
+      color: black;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 2px solid orange;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: orange;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid orange;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .success-message {
+      margin-top: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
+    <form id="studentForm">
+      <label for="class">ชั้น/ห้อง</label>
+      <select name="entry.522842455" id="class" required>
+        <option value="">-- กรุณาเลือก --</option>
+        <option>อนุบาล 2/1</option>
+        <option>อนุบาล 2/2</option>
+        <option>อนุบาล 2/3</option>
+        <option>อนุบาล 3/1</option>
+        <option>อนุบาล 3/2</option>
+        <option>อนุบาล 3/3</option>
+        <option>อนุบาล 3/4</option>
+        <option>ป.1/1</option>
+        <option>ป.1/2</option>
+        <option>ป.1/3</option>
+        <option>ป.1/4</option>
+        <option>ป.2/1</option>
+        <option>ป.2/2</option>
+        <option>ป.2/3</option>
+        <option>ป.2/4</option>
+        <option>ป.3/1</option>
+        <option>ป.3/2</option>
+        <option>ป.3/3</option>
+        <option>ป.3/4</option>
+        <option>ป.4/1</option>
+        <option>ป.4/2</option>
+        <option>ป.4/3</option>
+        <option>ป.4/4</option>
+        <option>ป.5/1</option>
+        <option>ป.5/2</option>
+        <option>ป.5/3</option>
+        <option>ป.5/4</option>
+        <option>ป.5/5</option>
+        <option>ป.6/1</option>
+        <option>ป.6/2</option>
+        <option>ป.6/3</option>
+        <option>ป.6/4</option>
+      </select>
+
+      <label>จำนวนนักเรียนชาย 👦🏻 ที่มาเรียน</label>
+      <input type="number" name="entry.446341418" min="0" required>
+
+      <label>จำนวนนักเรียนหญิง 👧 ที่มาเรียน</label>
+      <input type="number" name="entry.1572431820" min="0" required>
+
+      <label>จำนวนนักเรียนชาย 👦🏻 ที่ป่วย</label>
+      <input type="number" name="entry.932967472" min="0" required>
+
+      <label>จำนวนนักเรียนชาย 👦🏻 ที่ลา</label>
+      <input type="number" name="entry.1558724961" min="0" required>
+
+      <label>จำนวนนักเรียนชาย 👦🏻 ที่ขาด</label>
+      <input type="number" name="entry.1652164491" min="0" required>
+
+      <label>จำนวนนักเรียนหญิง 👧 ที่ป่วย</label>
+      <input type="number" name="entry.878207052" min="0" required>
+
+      <label>จำนวนนักเรียนหญิง 👧 ที่ลา</label>
+      <input type="number" name="entry.1277963062" min="0" required>
+
+      <label>จำนวนนักเรียนหญิง 👧 ที่ขาด</label>
+      <input type="number" name="entry.2011543549" min="0" required>
+
+      <button id="submitBtn" type="submit">ส่งข้อมูล</button>
+    </form>
+    <div class="success-message" id="successMessage">เจ้าหน้าที่ธุรการได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว ขอบคุณค่ะ</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('studentForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const url = 'https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse';
+
+      await fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      submitBtn.style.backgroundColor = 'red';
+      successMessage.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
