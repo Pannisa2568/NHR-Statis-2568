@@ -159,7 +159,9 @@
       const formData = new FormData(form);
       const query = new URLSearchParams(formData).toString();
       const url = "https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse";
-      <audio id="dingSound" src="https://github.com/Pannisa2568/NHR-Statis-2568/blob/main/bellding-254774.mp3" preload="auto"></audio>
+      const bell = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_d126d8d3df.mp3');
+bell.play();
+
       fetch(url, {
         method: "POST",
         mode: "no-cors",
