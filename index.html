@@ -171,6 +171,8 @@
     const form = document.getElementById('nhrForm');
     const submitBtn = document.getElementById('submitBtn');
     const audio = document.getElementById('ding');
+    const bell = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_d126d8d3df.mp3');
+bell.play();
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
