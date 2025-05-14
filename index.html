@@ -159,6 +159,8 @@
       const formData = new FormData(form);
       const query = new URLSearchParams(formData).toString();
       const url = "https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse";
+      const bell = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_d126d8d3df.mp3');
+bell.play();
 
       fetch(url, {
         method: "POST",
