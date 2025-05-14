@@ -2,175 +2,189 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>แบบบันทึกสถิตินักเรียน NHR School 2568</title>
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: 'Prompt', sans-serif;
-      background-color: white;
-      color: black;
+      background-color: #ffffff;
+      color: #000000;
       margin: 0;
-      padding: 1rem;
+      padding: 0;
     }
     .container {
       max-width: 600px;
       margin: auto;
+      padding: 1rem;
       border: 3px solid orange;
       border-radius: 10px;
-      padding: 20px;
+      margin-top: 1rem;
     }
     h1 {
       text-align: center;
-      color: black;
+      color: #000;
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 1rem;
       font-weight: bold;
     }
     select, input[type="number"] {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 2px solid orange;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1rem;
     }
     button {
       width: 100%;
-      padding: 12px;
       background-color: red;
       color: white;
+      padding: 0.75rem;
+      font-size: 1.1rem;
       border: none;
       border-radius: 5px;
-      font-size: 1.1rem;
-      margin-top: 15px;
+      margin-top: 1.5rem;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
-    .logos {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
+    button.sent {
+      background-color: green !important;
     }
-    .logos img {
-      max-height: 70px;
+    .center {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .logo {
+      width: 100%;
+      max-width: 180px;
+      display: block;
+      margin: 1rem auto;
     }
     .confirmation {
-      text-align: center;
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      border: 3px solid orange;
+      padding: 2rem;
       font-size: 1.2rem;
-      color: green;
-      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 9999;
+      border-radius: 15px;
       display: none;
+    }
+    #dashboard {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border: 3px solid orange;
+      border-radius: 10px;
+    }
+    #dashboard h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    #backBtn {
+      width: 100%;
+      background-color: #555;
+      color: white;
+      padding: 0.75rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logos">
-      <img src="https://img2.pic.in.th/pic/25673da72eed99cbdfc9.png" alt="Logo 1">
-      <img src="https://img5.pic.in.th/file/secure-sv1/2-5-2568-8-05-20.png" alt="Logo 2">
-    </div>
+    <img class="logo" src="https://img2.pic.in.th/pic/25673da72eed99cbdfc9.png" alt="Logo1" />
+    <img class="logo" src="https://img5.pic.in.th/file/secure-sv1/2-5-2568-8-05-20.png" alt="Logo2" />
     <h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
-    <form id="studentForm">
+    <p id="currentDate" class="center"></p>
+
+    <form id="attendanceForm">
       <label>ชั้น/ห้อง</label>
       <select name="entry.522842455" required>
-        <option value="">เลือกชั้น/ห้อง</option>
-        <option>อนุบาล 2/1</option>
-        <option>อนุบาล 2/2</option>
-        <option>อนุบาล 2/3</option>
-        <option>อนุบาล 3/1</option>
-        <option>อนุบาล 3/2</option>
-        <option>อนุบาล 3/3</option>
-        <option>อนุบาล 3/4</option>
-        <option>ป.1/1</option>
-        <option>ป.1/2</option>
-        <option>ป.1/3</option>
-        <option>ป.1/4</option>
-        <option>ป.2/1</option>
-        <option>ป.2/2</option>
-        <option>ป.2/3</option>
-        <option>ป.2/4</option>
-        <option>ป.3/1</option>
-        <option>ป.3/2</option>
-        <option>ป.3/3</option>
-        <option>ป.3/4</option>
-        <option>ป.4/1</option>
-        <option>ป.4/2</option>
-        <option>ป.4/3</option>
-        <option>ป.4/4</option>
-        <option>ป.5/1</option>
-        <option>ป.5/2</option>
-        <option>ป.5/3</option>
-        <option>ป.5/4</option>
-        <option>ป.5/5</option>
-        <option>ป.6/1</option>
-        <option>ป.6/2</option>
-        <option>ป.6/3</option>
-        <option>ป.6/4</option>
-        <option>ป.6/5</option>
+        <option value="">-- เลือกชั้น/ห้อง --</option>
+        <option>อนุบาล 2/1</option><option>อนุบาล 2/2</option><option>อนุบาล 2/3</option>
+        <option>อนุบาล 3/1</option><option>อนุบาล 3/2</option><option>อนุบาล 3/3</option><option>อนุบาล 3/4</option>
+        <option>ป.1/1</option><option>ป.1/2</option><option>ป.1/3</option><option>ป.1/4</option>
+        <option>ป.2/1</option><option>ป.2/2</option><option>ป.2/3</option><option>ป.2/4</option>
+        <option>ป.3/1</option><option>ป.3/2</option><option>ป.3/3</option><option>ป.3/4</option>
+        <option>ป.4/1</option><option>ป.4/2</option><option>ป.4/3</option><option>ป.4/4</option>
+        <option>ป.5/1</option><option>ป.5/2</option><option>ป.5/3</option><option>ป.5/4</option><option>ป.5/5</option>
+        <option>ป.6/1</option><option>ป.6/2</option><option>ป.6/3</option><option>ป.6/4</option><option>ป.6/5</option>
       </select>
 
       <label>จำนวนนักเรียนชาย 👦🏻 ที่มาเรียน</label>
-      <input type="number" name="entry.446341418" min="0" required value="0" />
-
+      <input type="number" name="entry.446341418" min="0" value="0" required />
       <label>จำนวนนักเรียนหญิง 👧 ที่มาเรียน</label>
-      <input type="number" name="entry.1572431820" min="0" required value="0" />
-
+      <input type="number" name="entry.1572431820" min="0" value="0" required />
       <label>จำนวนนักเรียนชาย 👦🏻 ที่ป่วย</label>
-      <input type="number" name="entry.932967472" min="0" required value="0" />
-
+      <input type="number" name="entry.932967472" min="0" value="0" required />
       <label>จำนวนนักเรียนชาย 👦🏻 ที่ลา</label>
-      <input type="number" name="entry.1558724961" min="0" required value="0" />
-
+      <input type="number" name="entry.1558724961" min="0" value="0" required />
       <label>จำนวนนักเรียนชาย 👦🏻 ที่ขาด</label>
-      <input type="number" name="entry.1652164491" min="0" required value="0" />
-
+      <input type="number" name="entry.1652164491" min="0" value="0" required />
       <label>จำนวนนักเรียนหญิง 👧 ที่ป่วย</label>
-      <input type="number" name="entry.878207052" min="0" required value="0" />
-
+      <input type="number" name="entry.878207052" min="0" value="0" required />
       <label>จำนวนนักเรียนหญิง 👧 ที่ลา</label>
-      <input type="number" name="entry.1277963062" min="0" required value="0" />
-
+      <input type="number" name="entry.1277963062" min="0" value="0" required />
       <label>จำนวนนักเรียนหญิง 👧 ที่ขาด</label>
-      <input type="number" name="entry.2011543549" min="0" required value="0" />
+      <input type="number" name="entry.2011543549" min="0" value="0" required />
 
       <button type="submit" id="submitBtn">ส่งข้อมูล</button>
+      <button type="button" id="backBtn">ย้อนกลับ</button>
     </form>
-    <div class="confirmation" id="confirmationMsg">เจ้าหน้าที่ธุรการได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว ขอบคุณค่ะ</div>
-    <audio id="ding" src="https://www.myinstants.com/media/sounds/ding-sound-effect_2.mp3" preload="auto"></audio>
   </div>
 
+  <div class="confirmation" id="confirmationMessage">
+    เจ้าหน้าที่ธุรการได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว<br>ขอบคุณค่ะ
+  </div>
+
+  <div id="dashboard">
+    <h2>แดชบอร์ดสรุปผล</h2>
+    <canvas id="attendanceChart"></canvas>
+  </div>
+
+  <audio id="ding" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+
   <script>
-    const form = document.getElementById("studentForm");
-    const btn = document.getElementById("submitBtn");
-    const msg = document.getElementById("confirmationMsg");
-    const sound = document.getElementById("ding");
+    // แสดงวันที่ปัจจุบัน
+    const months = [
+      "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+      "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+    ];
+    const today = new Date();
+    const dateStr = `${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear() + 543}`;
+    document.getElementById("currentDate").textContent = `วันที่ ${dateStr}`;
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
+    // ป้องกันการส่งฟอร์มซ้ำเมื่อรีเฟรชหน้า
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
 
-      fetch("https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse", {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      });
+    const form = document.getElementById('attendanceForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const backBtn = document.getElementById('backBtn');
+    const ding = document.getElementById('ding');
+    const confirmation = document.getElementById('confirmationMessage');
 
-      btn.style.backgroundColor = "green";
-      sound.play();
-      msg.style.display = "block";
-
-      setTimeout(() => {
-        msg.style.display = "none";
-        btn.style.backgroundColor = "red";
-        form.reset();
-        // Reset all number inputs to 0
-        form.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
-      }, 2000);
-    });
-  </script>
-</body>
-</html>
+    // ฟังก์ชันสำหรับอัปเดตแดชบอร์ด
+    function updateDashboard(data) {
+      const ctx = document.getElementById('attendanceChart').getContext('2d');
+      const chartData = {
+        labels: ['มาเรียน', 'ป่วย', 'ลา', 'ขาด'],
+        datasets: [{
+          label: 'จำนวนนักเรียน',
+          data: data,
+          backgroundColor: ['#4caf50', '#ff9800', '#2196f3', '#f
+::contentReference[oaicite:14]{index=14}
+ 
