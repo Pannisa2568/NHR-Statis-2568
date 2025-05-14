@@ -114,28 +114,28 @@
       </select>
 
       <label>จำนวนนักเรียนชาย 👦🏻 ที่มาเรียน</label>
-      <input type="number" name="entry.446341418" min="0" required />
-      
+      <input type="number" name="entry.446341418" min="0" required value="0" />
+
       <label>จำนวนนักเรียนหญิง 👧 ที่มาเรียน</label>
-      <input type="number" name="entry.1572431820" min="0" required />
-      
+      <input type="number" name="entry.1572431820" min="0" required value="0" />
+
       <label>จำนวนนักเรียนชาย 👦🏻 ที่ป่วย</label>
-      <input type="number" name="entry.932967472" min="0" required />
-      
+      <input type="number" name="entry.932967472" min="0" required value="0" />
+
       <label>จำนวนนักเรียนชาย 👦🏻 ที่ลา</label>
-      <input type="number" name="entry.1558724961" min="0" required />
-      
+      <input type="number" name="entry.1558724961" min="0" required value="0" />
+
       <label>จำนวนนักเรียนชาย 👦🏻 ที่ขาด</label>
-      <input type="number" name="entry.1652164491" min="0" required />
-      
+      <input type="number" name="entry.1652164491" min="0" required value="0" />
+
       <label>จำนวนนักเรียนหญิง 👧 ที่ป่วย</label>
-      <input type="number" name="entry.878207052" min="0" required />
-      
+      <input type="number" name="entry.878207052" min="0" required value="0" />
+
       <label>จำนวนนักเรียนหญิง 👧 ที่ลา</label>
-      <input type="number" name="entry.1277963062" min="0" required />
-      
+      <input type="number" name="entry.1277963062" min="0" required value="0" />
+
       <label>จำนวนนักเรียนหญิง 👧 ที่ขาด</label>
-      <input type="number" name="entry.2011543549" min="0" required />
+      <input type="number" name="entry.2011543549" min="0" required value="0" />
 
       <button type="submit" id="submitBtn">ส่งข้อมูล</button>
     </form>
@@ -167,6 +167,8 @@
         msg.style.display = "none";
         btn.style.backgroundColor = "red";
         form.reset();
+        // Reset all number inputs to 0
+        form.querySelectorAll('input[type="number"]').forEach(input => input.value = 0);
       }, 2000);
     });
   </script>
