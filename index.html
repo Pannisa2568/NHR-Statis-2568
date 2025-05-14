@@ -2,120 +2,207 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>แบบบันทึกสถิตินักเรียน NHR School 2568</title>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>แบบบันทึกสถิตินักเรียน NHR School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: 'Prompt', sans-serif;
-      background-color: white;
-      color: black;
-      padding: 20px;
-    }
-    header {
-      text-align: center;
-    }
-    header img {
-      display: block;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 1.5rem;
-      margin: 10px 0;
-    }
-    #thaiDate {
-      font-size: 30px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    form {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 1rem;
       max-width: 600px;
       margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
-    select, input[type="number"] {
-      padding: 10px;
-      border: 2px solid darkorange;
+    h1 {
+      text-align: center;
+      color: #000000;
+      margin-top: 0.5rem;
+    }
+    .logo {
+      display: block;
+      height: auto;
+      margin: 0.5rem auto;
+    }
+    .logo-1 {
+      max-width: 100px;
+    }
+    .logo-2 {
+      max-width: 140px;
+    }
+    #currentDate {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    form {
+      border: 3px solid orange;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.2rem;
+      border: 1px solid orange;
       border-radius: 5px;
-      font-size: 1rem;
     }
     button {
-      padding: 15px;
+      width: 100%;
+      padding: 0.8rem;
       font-size: 1rem;
-      background-color: red;
-      color: white;
       border: none;
       border-radius: 5px;
+      background-color: red;
+      color: white;
+      margin-top: 1.5rem;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s ease;
+    }
+    button:disabled {
+      background-color: gray;
+    }
+    .dashboard {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .back-btn {
+      background-color: #555;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://img2.pic.in.th/pic/25673da72eed99cbdfc9.png" width="150" />
-    <img src="https://img5.pic.in.th/file/secure-sv1/2-5-2568-8-05-20.png" width="300" />
-    <h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
-    <div id="thaiDate"></div>
-  </header>
+  <img class="logo logo-1" src="https://img2.pic.in.th/pic/25673da72eed99cbdfc9.png" alt="Logo1" />
+  <img class="logo logo-2" src="https://img5.pic.in.th/file/secure-sv1/2-5-2568-8-05-20.png" alt="Logo2" />
+  <h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
+  <p id="currentDate"></p>
+
   <form id="attendanceForm">
-    <select name="entry.522842455" required>
-      <option value="">เลือกชั้น/ห้อง</option>
-      <option>อนุบาล 2/1</option><option>อนุบาล 2/2</option><option>อนุบาล 2/3</option>
-      <option>อนุบาล 3/1</option><option>อนุบาล 3/2</option><option>อนุบาล 3/3</option><option>อนุบาล 3/4</option>
-      <option>ป.1/1</option><option>ป.1/2</option><option>ป.1/3</option><option>ป.1/4</option>
-      <option>ป.2/1</option><option>ป.2/2</option><option>ป.2/3</option><option>ป.2/4</option>
-      <option>ป.3/1</option><option>ป.3/2</option><option>ป.3/3</option><option>ป.3/4</option>
-      <option>ป.4/1</option><option>ป.4/2</option><option>ป.4/3</option><option>ป.4/4</option>
-      <option>ป.5/1</option><option>ป.5/2</option><option>ป.5/3</option><option>ป.5/4</option><option>ป.5/5</option>
-      <option>ป.6/1</option><option>ป.6/2</option><option>ป.6/3</option><option>ป.6/4</option><option>ป.6/5</option>
-    </select>
-    <input type="number" name="entry.446341418" placeholder="👦🏻 นักเรียนชายมาเรียน" min="0" required />
-    <input type="number" name="entry.1572431820" placeholder="👧 นักเรียนหญิงมาเรียน" min="0" required />
-    <input type="number" name="entry.932967472" placeholder="👦🏻 นักเรียนชายป่วย" min="0" />
-    <input type="number" name="entry.1558724961" placeholder="👦🏻 นักเรียนชายลา" min="0" />
-    <input type="number" name="entry.1652164491" placeholder="👦🏻 นักเรียนชายขาด" min="0" />
-    <input type="number" name="entry.878207052" placeholder="👧 นักเรียนหญิงป่วย" min="0" />
-    <input type="number" name="entry.1277963062" placeholder="👧 นักเรียนหญิงลา" min="0" />
-    <input type="number" name="entry.2011543549" placeholder="👧 นักเรียนหญิงขาด" min="0" />
+    <label>ชั้น/ห้อง
+      <select name="entry.522842455" required>
+        <option value="">-- กรุณาเลือก --</option>
+        <option>อนุบาล 2/1</option><option>อนุบาล 2/2</option><option>อนุบาล 2/3</option><option>อนุบาล 3/1</option>
+        <option>อนุบาล 3/2</option><option>อนุบาล 3/3</option><option>อนุบาล 3/4</option><option>ป.1/1</option>
+        <option>ป.1/2</option><option>ป.1/3</option><option>ป.1/4</option><option>ป.2/1</option><option>ป.2/2</option>
+        <option>ป.2/3</option><option>ป.2/4</option><option>ป.3/1</option><option>ป.3/2</option><option>ป.3/3</option>
+        <option>ป.3/4</option><option>ป.4/1</option><option>ป.4/2</option><option>ป.4/3</option><option>ป.4/4</option>
+        <option>ป.5/1</option><option>ป.5/2</option><option>ป.5/3</option><option>ป.5/4</option><option>ป.5/5</option>
+        <option>ป.6/1</option><option>ป.6/2</option><option>ป.6/3</option><option>ป.6/4</option><option>ป.6/5</option>
+      </select>
+    </label>
+
+    <label>👦🏻 นักเรียนชายมาเรียน
+      <input type="number" name="entry.446341418" value="0" min="0" required />
+    </label>
+
+    <label>👧 นักเรียนหญิงมาเรียน
+      <input type="number" name="entry.1572431820" value="0" min="0" required />
+    </label>
+
+    <label>👦🏻 นักเรียนชายป่วย
+      <input type="number" name="entry.932967472" value="0" min="0" />
+    </label>
+
+    <label>👦🏻 นักเรียนชายลา
+      <input type="number" name="entry.1558724961" value="0" min="0" />
+    </label>
+
+    <label>👦🏻 นักเรียนชายขาด
+      <input type="number" name="entry.1652164491" value="0" min="0" />
+    </label>
+
+    <label>👧 นักเรียนหญิงป่วย
+      <input type="number" name="entry.878207052" value="0" min="0" />
+    </label>
+
+    <label>👧 นักเรียนหญิงลา
+      <input type="number" name="entry.1277963062" value="0" min="0" />
+    </label>
+
+    <label>👧 นักเรียนหญิงขาด
+      <input type="number" name="entry.2011543549" value="0" min="0" />
+    </label>
+
     <button type="submit" id="submitBtn">ส่งข้อมูล</button>
+    <button type="button" class="back-btn" onclick="history.back()">ย้อนกลับ</button>
   </form>
 
-  <audio id="ding" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+  <div class="dashboard">
+    <canvas id="summaryChart" width="300" height="300"></canvas>
+  </div>
+
+  <audio id="dingSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_4b7f5d8063.mp3"></audio>
+
   <script>
-    const THAI_MONTHS = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
-    const today = new Date();
-    document.getElementById("thaiDate").innerText = `${today.getDate()} ${THAI_MONTHS[today.getMonth()]} ${today.getFullYear() + 543}`;
+    // ตั้งค่าวันที่ปัจจุบัน
+    document.getElementById("currentDate").textContent =
+      new Date().toLocaleDateString("th-TH", {
+        weekday: "long", year: "numeric", month: "long", day: "numeric"
+      });
 
-    document.getElementById("attendanceForm").addEventListener("submit", function(e) {
+    const form = document.getElementById("attendanceForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const dingSound = document.getElementById("dingSound");
+
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-      const action = "https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse";
+      submitBtn.disabled = true;
 
-      fetch(action, {
+      const formData = new FormData(form);
+      const query = new URLSearchParams(formData).toString();
+      const url = "https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse";
+
+      fetch(url, {
         method: "POST",
-        body: data,
-        mode: "no-cors"
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: query,
       }).then(() => {
-        document.getElementById("submitBtn").style.backgroundColor = "green";
-        document.getElementById("ding").play();
-        Swal.fire({
-          title: 'เจ้าหน้าที่ได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว ขอบคุณค่ะ',
-          timer: 2000,
-          timerProgressBar: true,
-          showConfirmButton: false,
-          allowOutsideClick: false,
-          allowEscapeKey: false
-        });
+        submitBtn.style.backgroundColor = "green";
+        dingSound.play();
+
         setTimeout(() => {
+          alert("เจ้าหน้าที่ธุรการได้รับข้อมูลห้องเรียนของท่านวันนี้แล้ว ขอบคุณค่ะ");
           form.reset();
-          document.getElementById("submitBtn").style.backgroundColor = "red";
+          document.querySelectorAll('input[type="number"]').forEach(el => el.value = 0);
+          submitBtn.style.backgroundColor = "red";
+          submitBtn.disabled = false;
         }, 2000);
       });
+    });
+
+    // Dashboard สรุป
+    const ctx = document.getElementById('summaryChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['👦🏻 มาเรียน', '👧 มาเรียน', '👦🏻 ป่วย', '👧 ป่วย', '👦🏻 ลา', '👧 ลา', '👦🏻 ขาด', '👧 ขาด'],
+        datasets: [{
+          label: 'สถิตินักเรียนวันนี้',
+          data: [12, 20, 1, 0, 0, 0, 1, 1], // ค่าจำลองตัวอย่าง
+          backgroundColor: [
+            '#4caf50', '#81c784', '#ff9800', '#ffcc80',
+            '#03a9f4', '#81d4fa', '#f44336', '#ef9a9a'
+          ],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
     });
   </script>
 </body>
